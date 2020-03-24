@@ -1,0 +1,15 @@
+<view class="container">
+  <form bindsubmit="onUploadVideo" style="width: 100%">
+    <view class="uploader-container" wx:if="{{videoUrl}}">
+      <video class="video" src="{{videoUrl}}"></video>
+    </view>
+
+    <view class="uploader-description">
+      <textarea placeholder="请输入视频描述" bindinput="bindTextAreaBlur" auto-height auto-focus />
+    </view>
+
+    <view class="footer">
+      <button form-type="submit">点击上传视频</button>
+    </view>
+  </form>
+</view>

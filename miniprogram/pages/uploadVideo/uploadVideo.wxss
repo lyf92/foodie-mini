@@ -1,0 +1,10 @@
+.uploader-container {
+  width: 100%;
+}
+
+.uploader-description {
+  min-height: 100rpx;
+  padding: 30rpx;
+  margin: 30rpx 0;
+  background-color: white;
+}

@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})">
+    </button>
+    <view>{{userInfo.nickName}}</view>
+    <view class="other-part" bindtap="showItem">
+      <image style="width: 30px; height: 30px;" src="../../images/更多.png"></image>
+    </view>
+  </view>
+
+  <scroll-view class="nav-page" style="height: {{windowHeight - 130}}px" bindscroll="onScrollVideos" scroll-y>
+    <view class="video-box" data-id="{{index}}" wx:for="{{videoList}}" wx:key="item">
+      <view class="video-name-box">
+        <view class="video-name">{{item.description}}</view>
+      </view>
+
+      <video class="video" id="video{{index}}" data-id="video{{index}}" src="{{item.url}}">
+        <cover-view class="fav-box" data-id="{{index}}" bindtap="onFavIcon">
+          <cover-image src="{{item.liked ? '../../images/收藏_后.png' : '../../images/收藏_前.png'}}"></cover-image>
+        </cover-view>
+        <cover-view class="footer" wx:if="{{index == videoList.length - 1}}">
+          <button class="upload-btn" bindtap="onChooseVideo">上传视频</button>
+        </cover-view>
+      </video>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="{{showItems?'display_show':'display_none'}}">
+    <cover-view class="item-option" wx:for="{{items}}" wx:key="item" data-id="{{index}}" style="color: {{item.choosed ? 'red' : 'black'}};" bindtap="filterVideo">{{item.name}}</cover-view>
+  </scroll-view>
+
+  <view class="footer" wx:if="{{videoList.length == 0}}">
+    <button class="upload-btn" bindtap="onChooseVideo">上传视频</button>
+  </view>
+</view>
